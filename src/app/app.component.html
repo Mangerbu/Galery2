@@ -1,0 +1,19 @@
+<form [formGroup]="modelForm" (ngSubmit)="search()">
+  <input type="text" formControlName="query" placeholder="Buscar">
+  <select>
+    <option *ngFor="let color of colors" [value]="color">{{color}}</option>
+  </select>
+  <button type="submit" [disabled]="modelForm.invalid">
+    Buscar
+  </button>
+</form>
+
+<div class="grid">
+  <div class="item"*ngFor="let photo of photos">
+    <img [src]="photo.urls.small" [alt]="photo.alt_description">
+    <div class="info">
+      <div class="date">{{ photo.created_at | date: 'mediumDate'}}</div>
+      <div class="desc">{{ photo.alt_description}}</div>
+    </div>
+  </div>
+</div>
